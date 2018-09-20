@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import eventCounter from '../lib/eventCounter';
 
-class Cell extends Component {
+class Cell extends PureComponent {
   static propTypes = {
     rowIdx: PropTypes.number.isRequired,
     columnIdx: PropTypes.number.isRequired,
