@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import eventCounter from '../lib/eventCounter';
 
+import HeaderRow from './HeaderRow';
 import Row from './Row';
 
 import './Spreadsheet.css';
@@ -51,12 +52,6 @@ class Spreadsheet extends Component {
     window.removeEventListener('mouseup', this.handleMouseUp);
   };
 
-  renderHeaderCell = column => {
-    eventCounter('HeaderCell');
-
-    return <th key={column.key}>{column.name}</th>;
-  };
-
   renderRow = (row, rowIdx) => {
     const { selectedRange } = this.state;
 
@@ -83,7 +78,7 @@ class Spreadsheet extends Component {
     return (
       <table>
         <thead>
-          <tr>{this.props.columns.map(this.renderHeaderCell)}</tr>
+          <HeaderRow columns={this.props.columns} />
         </thead>
         <tbody>{this.props.rows.map(this.renderRow)}</tbody>
       </table>
