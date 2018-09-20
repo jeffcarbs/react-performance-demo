@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import eventCounter from '../lib/eventCounter';
 
+import Cell from './Cell';
+
 import './Spreadsheet.css';
 
 class Spreadsheet extends Component {
@@ -56,8 +58,6 @@ class Spreadsheet extends Component {
   };
 
   renderCell = (row, rowIdx, column, columnIdx) => {
-    eventCounter('Cell');
-
     const { selectedRange } = this.state;
 
     const selected =
@@ -68,14 +68,15 @@ class Spreadsheet extends Component {
       selectedRange.stop.columnIdx >= columnIdx;
 
     return (
-      <td
+      <Cell
         key={column.key}
-        className={selected ? 'selected' : ''}
-        onMouseDown={e => this.handleMouseDown(e, { rowIdx, columnIdx })}
-        onMouseEnter={e => this.handleMouseEnter(e, { rowIdx, columnIdx })}
-      >
-        {row[column.key]}
-      </td>
+        selected={!!selected}
+        onMouseDown={this.handleMouseDown}
+        onMouseEnter={this.handleMouseEnter}
+        rowIdx={rowIdx}
+        columnIdx={columnIdx}
+        value={row[column.key]}
+      />
     );
   };
 
