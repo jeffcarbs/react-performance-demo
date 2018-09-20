@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import eventCounter from '../lib/eventCounter';
 
-import Cell from './Cell';
+import Row from './Row';
 
 import './Spreadsheet.css';
 
@@ -57,38 +57,17 @@ class Spreadsheet extends Component {
     return <th key={column.key}>{column.name}</th>;
   };
 
-  renderCell = (row, rowIdx, column, columnIdx) => {
-    const { selectedRange } = this.state;
-
-    const selected =
-      selectedRange &&
-      selectedRange.start.rowIdx <= rowIdx &&
-      selectedRange.stop.rowIdx >= rowIdx &&
-      selectedRange.start.columnIdx <= columnIdx &&
-      selectedRange.stop.columnIdx >= columnIdx;
-
+  renderRow = (row, rowIdx) => {
     return (
-      <Cell
-        key={column.key}
-        selected={!!selected}
+      <Row
+        key={row.id}
+        columns={this.props.columns}
         onMouseDown={this.handleMouseDown}
         onMouseEnter={this.handleMouseEnter}
+        row={row}
         rowIdx={rowIdx}
-        columnIdx={columnIdx}
-        value={row[column.key]}
+        selectedRange={this.state.selectedRange}
       />
-    );
-  };
-
-  renderRow = (row, rowIdx) => {
-    eventCounter('Row');
-
-    return (
-      <tr key={row.id}>
-        {this.props.columns.map((column, columnIdx) =>
-          this.renderCell(row, rowIdx, column, columnIdx),
-        )}
-      </tr>
     );
   };
 
