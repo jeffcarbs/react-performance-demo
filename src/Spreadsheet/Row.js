@@ -12,18 +12,17 @@ class Row extends PureComponent {
     row: PropTypes.object.isRequired,
     onMouseDown: PropTypes.func.isRequired,
     onMouseEnter: PropTypes.func.isRequired,
-    selectedRange: PropTypes.object.isRequired,
+    selectedStart: PropTypes.number,
+    selectedStop: PropTypes.number,
   };
 
   renderCell = (column, columnIdx) => {
     const { selectedRange, rowIdx } = this.props;
 
     const selected =
-      selectedRange &&
-      selectedRange.start.rowIdx <= rowIdx &&
-      selectedRange.stop.rowIdx >= rowIdx &&
-      selectedRange.start.columnIdx <= columnIdx &&
-      selectedRange.stop.columnIdx >= columnIdx;
+      this.props.selectedStart !== undefined &&
+      this.props.selectedStart <= columnIdx &&
+      this.props.selectedStop >= columnIdx;
 
     return (
       <Cell

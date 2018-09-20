@@ -58,6 +58,11 @@ class Spreadsheet extends Component {
   };
 
   renderRow = (row, rowIdx) => {
+    const { selectedRange } = this.state;
+
+    const selected =
+      selectedRange && selectedRange.start.rowIdx <= rowIdx && selectedRange.stop.rowIdx >= rowIdx;
+
     return (
       <Row
         key={row.id}
@@ -66,7 +71,8 @@ class Spreadsheet extends Component {
         onMouseEnter={this.handleMouseEnter}
         row={row}
         rowIdx={rowIdx}
-        selectedRange={this.state.selectedRange}
+        selectedStart={selected ? selectedRange.start.columnIdx : undefined}
+        selectedStop={selected ? selectedRange.stop.columnIdx : undefined}
       />
     );
   };
