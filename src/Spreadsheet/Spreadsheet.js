@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import eventCounter from '../lib/eventCounter';
+
 import './Spreadsheet.css';
 
 class Spreadsheet extends Component {
@@ -48,10 +50,14 @@ class Spreadsheet extends Component {
   };
 
   renderHeaderCell = column => {
+    eventCounter('HeaderCell');
+
     return <th key={column.key}>{column.name}</th>;
   };
 
   renderCell = (row, rowIdx, column, columnIdx) => {
+    eventCounter('Cell');
+
     const { selectedRange } = this.state;
 
     const selected =
@@ -74,6 +80,8 @@ class Spreadsheet extends Component {
   };
 
   renderRow = (row, rowIdx) => {
+    eventCounter('Row');
+
     return (
       <tr key={row.id}>
         {this.props.columns.map((column, columnIdx) =>
@@ -84,6 +92,8 @@ class Spreadsheet extends Component {
   };
 
   render() {
+    eventCounter('Spreadsheet');
+
     return (
       <table>
         <thead>
