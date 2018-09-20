@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+
+import rows from './lib/people-1000.json';
+import Spreadsheet from './Spreadsheet';
+
+const columns = [
+  { key: 'id', name: 'ID' },
+  { key: 'firstName', name: 'First Name' },
+  { key: 'lastName', name: 'Last Name' },
+  { key: 'email', name: 'Email' },
+  { key: 'street1', name: 'Street 1' },
+  { key: 'street2', name: 'Street 2' },
+  { key: 'city', name: 'City' },
+  { key: 'state', name: 'State' },
+  { key: 'zip', name: 'Zip' },
+];
 
 class App extends Component {
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+    return <Spreadsheet columns={columns} rows={rows} />;
   }
 }
 
