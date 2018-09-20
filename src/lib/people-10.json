@@ -1,0 +1,112 @@
+[
+  {
+    "id": 0,
+    "firstName": "Laila",
+    "lastName": "Goodwin",
+    "email": "laila.goodwin@example.com",
+    "street1": "875 Shields Island",
+    "street2": "Suite 375",
+    "city": "North Darrionmouth",
+    "state": "Utah",
+    "zip": "47755"
+  },
+  {
+    "id": 1,
+    "firstName": "Marty",
+    "lastName": "Thompson",
+    "email": "marty.thompson@example.com",
+    "street1": "30670 Alexandrine Circles",
+    "street2": "Suite 364",
+    "city": "East Alana",
+    "state": "Tennessee",
+    "zip": "71604"
+  },
+  {
+    "id": 2,
+    "firstName": "Madilyn",
+    "lastName": "Hyatt",
+    "email": "madilyn.hyatt@example.com",
+    "street1": "40918 Adela Crescent",
+    "street2": "Suite 463",
+    "city": "Lake Guiseppeville",
+    "state": "Arizona",
+    "zip": "31667-8358"
+  },
+  {
+    "id": 3,
+    "firstName": "Ashlee",
+    "lastName": "Hermann",
+    "email": "ashlee.hermann@example.com",
+    "street1": "2587 Moore Shores",
+    "street2": "Apt. 875",
+    "city": "Port Brendaport",
+    "state": "New Jersey",
+    "zip": "89681"
+  },
+  {
+    "id": 4,
+    "firstName": "Danika",
+    "lastName": "Hodkiewicz",
+    "email": "danika.hodkiewicz@example.com",
+    "street1": "607 Beier Camp",
+    "street2": "Apt. 222",
+    "city": "New Claudia",
+    "state": "South Carolina",
+    "zip": "41591-8553"
+  },
+  {
+    "id": 5,
+    "firstName": "Keira",
+    "lastName": "Hammes",
+    "email": "keira.hammes@example.com",
+    "street1": "24703 Sipes Isle",
+    "street2": "Apt. 161",
+    "city": "Beckerton",
+    "state": "Hawaii",
+    "zip": "64223-3001"
+  },
+  {
+    "id": 6,
+    "firstName": "Luella",
+    "lastName": "Veum",
+    "email": "luella.veum@example.com",
+    "street1": "5246 Florine Prairie",
+    "street2": "Apt. 537",
+    "city": "Leetown",
+    "state": "Rhode Island",
+    "zip": "51033-9045"
+  },
+  {
+    "id": 7,
+    "firstName": "Megane",
+    "lastName": "Nikolaus",
+    "email": "megane.nikolaus@example.com",
+    "street1": "28767 Gleason Common",
+    "street2": "Suite 149",
+    "city": "O'Reillyfort",
+    "state": "Tennessee",
+    "zip": "52456"
+  },
+  {
+    "id": 8,
+    "firstName": "Carmela",
+    "lastName": "Smith",
+    "email": "carmela.smith@example.com",
+    "street1": "3366 Leffler Courts",
+    "street2": "Suite 593",
+    "city": "Lake Lydaville",
+    "state": "Maine",
+    "zip": "22461-9740"
+  },
+  {
+    "id": 9,
+    "firstName": "Reese",
+    "lastName": "Lesch",
+    "email": "reese.lesch@example.com",
+    "street1": "4943 Hegmann Row",
+    "street2": "Suite 162",
+    "city": "Joshuahport",
+    "state": "Georgia",
+    "zip": "52166"
+  }
+]
