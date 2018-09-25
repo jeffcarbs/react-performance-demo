@@ -8,6 +8,11 @@ import Row from './Row';
 
 import './Spreadsheet.css';
 
+const columnsToShow = (columns, hiddenColumnKeys) => {
+  const hiddenColumnSet = new Set(hiddenColumnKeys);
+  return columns.filter(column => !hiddenColumnSet.has(column.key));
+};
+
 class Spreadsheet extends Component {
   static propTypes = {
     columns: PropTypes.array,
@@ -16,6 +21,9 @@ class Spreadsheet extends Component {
 
   state = {
     selectedRange: undefined,
+    hiddenColumnKeys: [],
+    rows: [...this.props.rows],
+    visibleColumns: [...this.props.columns],
   };
 
   handleMouseDown = (e, { rowIdx, columnIdx }) => {
@@ -52,8 +60,25 @@ class Spreadsheet extends Component {
     window.removeEventListener('mouseup', this.handleMouseUp);
   };
 
+  handleHeaderRemoveClick = (e, { key }) => {
+    const hiddenColumnKeys = [...this.state.hiddenColumnKeys, key];
+
+    this.setState({
+      hiddenColumnKeys,
+      visibleColumns: columnsToShow(this.props.columns, hiddenColumnKeys),
+    });
+  };
+
+  handleCellRemoveClick = (e, { rowIdx, columnIdx }) => {
+    const column = this.state.visibleColumns[columnIdx];
+    const rows = this.state.rows;
+
+    rows[rowIdx] = { ...rows[rowIdx], [column.key]: null };
+    this.setState({ rows });
+  };
+
   renderRow = (row, rowIdx) => {
-    const { selectedRange } = this.state;
+    const { selectedRange, visibleColumns } = this.state;
 
     const selected =
       selectedRange && selectedRange.start.rowIdx <= rowIdx && selectedRange.stop.rowIdx >= rowIdx;
@@ -61,9 +86,10 @@ class Spreadsheet extends Component {
     return (
       <Row
         key={row.id}
-        columns={this.props.columns}
+        columns={visibleColumns}
         onMouseDown={this.handleMouseDown}
         onMouseEnter={this.handleMouseEnter}
+        onRemoveClick={this.handleCellRemoveClick}
         row={row}
         rowIdx={rowIdx}
         selectedStart={selected ? selectedRange.start.columnIdx : undefined}
@@ -75,12 +101,14 @@ class Spreadsheet extends Component {
   render() {
     eventCounter('Spreadsheet');
 
+    const { visibleColumns } = this.state;
+
     return (
       <table>
         <thead>
-          <HeaderRow columns={this.props.columns} />
+          <HeaderRow columns={visibleColumns} onRemoveClick={this.handleHeaderRemoveClick} />
         </thead>
-        <tbody>{this.props.rows.map(this.renderRow)}</tbody>
+        <tbody>{this.state.rows.map(this.renderRow)}</tbody>
       </table>
     );
   }

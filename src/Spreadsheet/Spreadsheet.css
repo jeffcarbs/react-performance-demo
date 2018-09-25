@@ -11,6 +11,12 @@ table td {
   user-select: none;
 }
 
+table th a,
+table td a {
+  float: right;
+  margin-left: 10px;
+}
+
 table tbody td.selected {
   background-color: #edf9ff;
   box-shadow: 1px 0px 0 0 #b3def4, 0px 1px 0 0 #b3def4, 0px 0px 0 0 #b3def4, 1px 1px 0 0 #b3def4;

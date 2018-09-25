@@ -9,6 +9,7 @@ class Cell extends PureComponent {
     columnIdx: PropTypes.number.isRequired,
     onMouseDown: PropTypes.func.isRequired,
     onMouseEnter: PropTypes.func.isRequired,
+    onRemoveClick: PropTypes.func.isRequired,
     selected: PropTypes.bool.isRequired,
     value: PropTypes.any,
   };
@@ -35,6 +36,7 @@ class Cell extends PureComponent {
         onMouseEnter={this.handleMouseEnter}
       >
         {value}
+        <a onClick={e => this.props.onRemoveClick(e, this.props)}>×</a>
       </td>
     );
   }

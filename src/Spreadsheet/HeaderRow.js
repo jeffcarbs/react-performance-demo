@@ -6,12 +6,18 @@ import eventCounter from '../lib/eventCounter';
 class HeaderRow extends PureComponent {
   static propTypes = {
     columns: PropTypes.array.isRequired,
+    onRemoveClick: PropTypes.func.isRequired,
   };
 
   renderHeaderCell = column => {
     eventCounter('HeaderCell');
 
-    return <th key={column.key}>{column.name}</th>;
+    return (
+      <th key={column.key}>
+        {column.name}
+        <a onClick={e => this.props.onRemoveClick(e, column)}>×</a>
+      </th>
+    );
   };
 
   render() {

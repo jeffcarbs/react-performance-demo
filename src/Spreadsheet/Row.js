@@ -12,6 +12,7 @@ class Row extends PureComponent {
     row: PropTypes.object.isRequired,
     onMouseDown: PropTypes.func.isRequired,
     onMouseEnter: PropTypes.func.isRequired,
+    onRemoveClick: PropTypes.func.isRequired,
     selectedStart: PropTypes.number,
     selectedStop: PropTypes.number,
   };
@@ -30,6 +31,7 @@ class Row extends PureComponent {
         selected={!!selected}
         onMouseDown={this.props.onMouseDown}
         onMouseEnter={this.props.onMouseEnter}
+        onRemoveClick={this.props.onRemoveClick}
         columnIdx={columnIdx}
         rowIdx={this.props.rowIdx}
         value={this.props.row[column.key]}
